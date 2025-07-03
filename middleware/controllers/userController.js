@@ -1,10 +1,7 @@
 
 
-
-// axios for http requests
 const axios = require("axios");
 
-// register user with test server
 async function registerUser(req, res) {
   let { email, name, mobileNo, rollNo, githubUsername } = req.body;
   email = typeof email === 'string' ? email.trim() : '';
@@ -18,7 +15,6 @@ async function registerUser(req, res) {
     return;
   }
   try {
-    // send to test server
     let response = await axios.post(
       "https://20.244.56.144/evaluation-service/register",
       { email, name, mobileNo, rollNo, accessCode, githubUsername },
@@ -31,7 +27,6 @@ async function registerUser(req, res) {
   }
 }
 
-// get auth token from test server
 async function getAuthToken(req, res) {
   const { email, name, rollNo, accessCode, clientID, clientSecret } = req.body;
   try {
